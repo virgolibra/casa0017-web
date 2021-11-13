@@ -59,6 +59,9 @@ map.on("load", () => {
   });
 
   map.addLayer(BikeTFL);
+  const timer = setInterval(() => {
+    BikeTFL.setProps({ data: "https://api.tfl.gov.uk/BikePoint" });
+  }, 300000); //API called every 5 min => 300000 ms
 
 function hideTooltip() {
   console.log("hide tip");

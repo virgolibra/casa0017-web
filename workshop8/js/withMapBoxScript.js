@@ -37,32 +37,32 @@
 
     //tate Morden:
     const marker2 = new mapboxgl.Marker()
-    .setLngLat([51.508676367797285, -0.09929038196690297])
+    .setLngLat([ -0.09929038196690297,51.508676367797285])
     .addTo(map);
 
     //london eye：
     const marker3 = new mapboxgl.Marker()
-    .setLngLat([51.50343084692139, -0.11954297294079794])
+    .setLngLat([ -0.11954297294079794,51.50343084692139])
     .addTo(map);
 
     //national gallery:
     const marker4 = new mapboxgl.Marker()
-    .setLngLat([51.50906276178127, -0.12827467479226445])
+    .setLngLat([ -0.12827467479226445,51.50906276178127])
     .addTo(map);
 
     //British museum：
     const marker5 = new mapboxgl.Marker()
-    .setLngLat([51.5196135595575, -0.12701024595593177])
+    .setLngLat([ -0.12701024595593177,51.5196135595575])
     .addTo(map);
 
     //Tower of London：
     const marker6 = new mapboxgl.Marker()
-    .setLngLat([51.50947490124, -0.07584961469949537])
+    .setLngLat([ -0.07584961469949537,51.50947490124])
     .addTo(map);
 
     //Victoria and Albert Museum: 
     const marker7 = new mapboxgl.Marker()
-    .setLngLat([51.49675940777218, -0.17216927294105142])
+    .setLngLat([-0.17216927294105142,51.49675940777218])
     .addTo(map);
      
     // // Create a default Marker, colored black, rotated 45 degrees.
