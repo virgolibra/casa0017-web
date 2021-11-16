@@ -66,3 +66,12 @@ max-width: 50%;
 height: auto;
 place-self: center;
 }
+
+.marker {
+    background-image: url('../img/mapbox-icon.png');
+    background-size: cover;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    cursor: pointer;
+  }

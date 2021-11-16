@@ -43,33 +43,32 @@ map.on("load", () => {
     getFillColor: (d) => [255, 140, 0],
     getLineColor: (d) => [0, 0, 30],
 
-    onHover: ({ object }, info) => {
+onHover: ({ object }, info) => {
       (isHovering = Boolean(object));
       if (isHovering == true) {
         console.log(object.additionalProperties[6].value);
-        console.log(object.additionalProperties[7].value);
-
         map.getCanvas().style.cursor = 'pointer';
         showTooltip(info, object);
         }
         else { hideTooltip(); }
       },
-
-
-  });
+    });
 
   map.addLayer(BikeTFL);
   const timer = setInterval(() => {
     BikeTFL.setProps({ data: "https://api.tfl.gov.uk/BikePoint" });
   }, 300000); //API called every 5 min => 300000 ms
 
+
+
+
+});
+
 function hideTooltip() {
-  console.log("hide tip");
   d3.select("#tooltip").style("visibility", "hidden");
 }
 
 function showTooltip(info, object) {
-  console.log("show tip");
   d3
     .select("#tooltip")
     .style("top", info.center.y + 3)
@@ -81,8 +80,3 @@ function showTooltip(info, object) {
              <p class='item-a'> Free Bikes: ${object.additionalProperties[6].value}</p>
              <p class='item-b'> Empty Docks: ${object.additionalProperties[7].value}</p>`);
 }
-
-
-
-
-});

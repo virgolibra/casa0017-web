@@ -6,9 +6,9 @@
     
     
     const INITIAL_VIEW_STATE = {
-        longitude: 0.12,
+        longitude: -0.12,
         latitude: 51.5,
-        zoom: 10,
+        zoom: 11,
         bearing: 0,
         pitch: 0
     };
@@ -17,7 +17,7 @@
       // MapBox Vector Tile
       const map = new mapboxgl.Map({
         container: 'map',
-        // style: 'mapbox://styles/mapbox/light-v10', //vector tiles require a Mapbox API to access them
+        //  style: 'mapbox://styles/mapbox/light-v10', //vector tiles require a Mapbox API to access them
         style: 'mapbox://styles/mapbox/navigation-night-v1', 
         
         // Note: deck.gl will be in charge of interaction and event handling
@@ -29,41 +29,63 @@
     });
 
 
-    // Create a default Marker and add it to the map.
-    //bigben：
-    const marker1 = new mapboxgl.Marker()
-    .setLngLat([-0.124603,51.500896])
-    .addTo(map);
 
-    //tate Morden:
-    const marker2 = new mapboxgl.Marker()
-    .setLngLat([ -0.09929038196690297,51.508676367797285])
-    .addTo(map);
+    /* Data points defined as an array of LatLng objects */
+// var heatmapData = [
+//   new mapboxgl.Marker().setLngLat([-0.124603,51.500896]),
+//   new mapboxgl.Marker().setLngLat([ -0.09929038196690297,51.508676367797285]),
+//   new mapboxgl.Marker().setLngLat([ -0.11954297294079794,51.50343084692139]),
+//   new mapboxgl.Marker().setLngLat([ -0.12827467479226445,51.50906276178127]),
+//   new mapboxgl.Marker().setLngLat([ -0.12701024595593177,51.5196135595575]),
+//   new mapboxgl.Marker().setLngLat([ -0.07584961469949537,51.50947490124]),
+//   new mapboxgl.Marker().setLngLat([-0.17216927294105142,51.49675940777218]),
+//   // new mapboxgl.Marker().setLngLat([-0.124603,51.500896]),
+//   // new mapboxgl.Marker().setLngLat([-0.124603,51.500896]),
+//   // new mapboxgl.Marker().setLngLat([-0.124603,51.500896]),
+//   // new mapboxgl.Marker().setLngLat([-0.124603,51.500896]),
+//   // new mapboxgl.Marker().setLngLat([-0.124603,51.500896]),
 
-    //london eye：
-    const marker3 = new mapboxgl.Marker()
-    .setLngLat([ -0.11954297294079794,51.50343084692139])
-    .addTo(map);
+// ];
 
-    //national gallery:
-    const marker4 = new mapboxgl.Marker()
-    .setLngLat([ -0.12827467479226445,51.50906276178127])
-    .addTo(map);
+// heatmapData.addTo(map);
 
-    //British museum：
-    const marker5 = new mapboxgl.Marker()
-    .setLngLat([ -0.12701024595593177,51.5196135595575])
-    .addTo(map);
 
-    //Tower of London：
-    const marker6 = new mapboxgl.Marker()
-    .setLngLat([ -0.07584961469949537,51.50947490124])
-    .addTo(map);
 
-    //Victoria and Albert Museum: 
-    const marker7 = new mapboxgl.Marker()
-    .setLngLat([-0.17216927294105142,51.49675940777218])
-    .addTo(map);
+    // // Create a default Marker and add it to the map.
+    // //bigben：
+    // const marker1 = new mapboxgl.Marker()
+    // .setLngLat([-0.124603,51.500896])
+    // .addTo(map);
+
+    // //tate Morden:
+    // const marker2 = new mapboxgl.Marker()
+    // .setLngLat([ -0.09929038196690297,51.508676367797285])
+    // .addTo(map);
+
+    // //london eye：
+    // const marker3 = new mapboxgl.Marker()
+    // .setLngLat([ -0.11954297294079794,51.50343084692139])
+    // .addTo(map);
+
+    // //national gallery:
+    // const marker4 = new mapboxgl.Marker()
+    // .setLngLat([ -0.12827467479226445,51.50906276178127])
+    // .addTo(map);
+
+    // //British museum：
+    // const marker5 = new mapboxgl.Marker()
+    // .setLngLat([ -0.12701024595593177,51.5196135595575])
+    // .addTo(map);
+
+    // //Tower of London：
+    // const marker6 = new mapboxgl.Marker()
+    // .setLngLat([ -0.07584961469949537,51.50947490124])
+    // .addTo(map);
+
+    // //Victoria and Albert Museum: 
+    // const marker7 = new mapboxgl.Marker()
+    // .setLngLat([-0.17216927294105142,51.49675940777218])
+    // .addTo(map);
      
     // // Create a default Marker, colored black, rotated 45 degrees.
     // const marker2 = new mapboxgl.Marker({ color: 'black', rotation: 45 })
@@ -80,6 +102,303 @@
 // Trafalgar Square: 51.50812677208848, -0.12808646579321398
 
     map.on('load', () => {
+
+    //   const BikeTFL = new deck.MapboxLayer({
+    //     id: "bike-tfl",
+    //     data: "https://api.tfl.gov.uk/BikePoint",
+    //     type: deck.ScatterplotLayer,
+    //     pickable: true,
+    //     opacity: 0.8,
+    //     stroked: true,
+    //     filled: true,
+    //     radiusScale: 50,
+    //     radiusMinPixels: 10,
+    //     radiusMaxPixels: 150,
+    //     lineWidthMinPixels: 1,
+    //     getPosition: (d) => [d.lon, d.lat],
+    //     getRadius: (d) => d.additionalProperties[6].value,
+    //     getFillColor: (d) => [255, 140, 0],
+    //     getLineColor: (d) => [0, 0, 30],
+    
+    // onHover: ({ object }, info) => {
+    //       (isHovering = Boolean(object));
+    //       if (isHovering == true) {
+    //         console.log(object.additionalProperties[6].value);
+    //         map.getCanvas().style.cursor = 'pointer';
+    //         showTooltip(info, object);
+    //         }
+    //         else { hideTooltip(); }
+    //       },
+    //     });
+    
+    //   map.addLayer(BikeTFL);
+
+
+      // map.addSource('my-data', {
+      //   "type": "geojson",
+      //   "data": {
+      //   "type": "Feature",
+      //   "geometry": {
+      //   "type": "Point",
+      //   "coordinates": [-0.124603,51.500896]
+      //   },
+      //   "properties": {
+      //   "title": "Mapbox DC",
+      //   "marker-symbol": "monument",
+      //   "dbh":555
+      //   }
+      //   }
+      //   });
+      
+        map.addSource('trees', {
+          type: 'geojson',
+          data: './resources/trees.geojson'
+        });
+     
+        map.addSource('myData', {
+          type: 'geojson',
+          data: './resources/myData.geojson'
+        });
+
+        const geojson = {"type": "FeatureCollection",
+        "features": [
+            {"type": "Feature", 
+                "geometry": {
+                    "type": "Point",
+                    "coordinates": [-0.124603,51.500896]
+                },
+                "properties": {
+                    "title": "Mapbox",
+                    "description": "Bigben",
+                    "heat":10
+                }
+            },
+    
+            {"type": "Feature",
+                "geometry": {
+                    "type": "Point",
+                    "coordinates": [ -0.09929038196690297,51.508676367797285]
+                },
+                "properties": {
+                    "title": "Mapbox",
+                    "description": "Tate Morden",
+                    "heat":40
+                }
+            },
+    
+            {"type": "Feature",
+                "geometry": {
+                    "type": "Point",
+                    "coordinates": [ -0.11954297294079794,51.50343084692139]
+                },
+                "properties": {
+                    "title": "Mapbox",
+                    "description": "London Eye",
+                    "heat":18
+                }
+            },
+    
+            {"type": "Feature",
+                "geometry": {
+                    "type": "Point",
+                    "coordinates": [ -0.12827467479226445,51.50906276178127]
+                },
+                "properties": {
+                    "title": "Mapbox",
+                    "description": "National Gallery",
+                    "heat":47
+                }
+            },
+    
+            {"type": "Feature",
+                "geometry": {
+                    "type": "Point",
+                    "coordinates": [ -0.12701024595593177,51.5196135595575]
+                },
+                "properties": {
+                    "title": "Mapbox",
+                    "description": "British museum",
+                    "heat":40
+                }
+            },
+    
+            {"type": "Feature",
+                "geometry": {
+                    "type": "Point",
+                    "coordinates": [ -0.07584961469949537,51.50947490124]
+                },
+                "properties": {
+                    "title": "Mapbox",
+                    "description": "Tower of London",
+                    "heat":30
+                }
+            },
+    
+            {"type": "Feature",
+                "geometry": {
+                    "type": "Point",
+                    "coordinates": [ -0.17216927294105142,51.49675940777218]
+                },
+                "properties": {
+                    "title": "Mapbox",
+                    "description": "Victoria and Albert Museum",
+                    "heat":20
+                }
+            },
+    
+            {"type": "Feature",
+                "geometry": {
+                    "type": "Point",
+                    "coordinates": [ -0.07536723061262272,51.50558326255463 ]
+                },
+                "properties": {
+                    "title": "Mapbox",
+                    "description": "London Tower Bridge",
+                    "heat":40
+                }
+            },
+    
+            
+            {"type": "Feature",
+                "geometry": {
+                    "type": "Point",
+                    "coordinates": [ -0.127267116069872 ,51.499805270230155 ]
+                },
+                "properties": {
+                    "title": "Mapbox",
+                    "description": "Westminster Abbey",
+                    "heat":29
+                }
+            },
+                
+            {"type": "Feature",
+                "geometry": {
+                    "type": "Point",
+                    "coordinates": [ -0.16569155196675464 , 51.50773254598538 ]
+                },
+                "properties": {
+                    "title": "Mapbox",
+                    "description": "Hyde Park",
+                    "heat":45
+                }
+            },
+    
+            {"type": "Feature",
+                "geometry": {
+                    "type": "Point",
+                    "coordinates": [-0.08643840389352578 , 51.50467878549576 ]
+                },
+                "properties": {
+                    "title": "Mapbox",
+                    "description": "The Shard",
+                    "heat":30
+                }
+            },
+    
+            {"type": "Feature",
+                "geometry": {
+                    "type": "Point",
+                    "coordinates": [-0.12808646579321398 ,  51.50812677208848 ]
+                },
+                "properties": {
+                    "title": "Mapbox",
+                    "description": "Trafalgar Square",
+                    "heat":40
+                }
+            }
+    
+    
+    
+        ]
+    }
+    
+    // add markers to map
+for (const feature of geojson.features) {
+  // create a HTML element for each feature
+  const el = document.createElement('div');
+  el.className = 'marker';
+
+  // make a marker for each feature and add to the map
+  // new mapboxgl.Marker(el).setLngLat(feature.geometry.coordinates).addTo(map);
+  new mapboxgl.Marker().setLngLat(feature.geometry.coordinates).addTo(map);
+  
+}
+//         const mySource = map.getSource('myData');
+//         var geoJson = mySource.getGeoJSON();
+
+//             // add markers to map
+// for (const feature of geoJson.features) {
+//   // create a HTML element for each feature
+//   const el = document.createElement('div');
+//   el.className = 'marker';
+
+//   // make a marker for each feature and add to the map
+//   new mapboxgl.Marker(el).setLngLat(feature.geometry.coordinates).addTo(map);
+// }
+
+        // mySource.features.forEach(function(marker) {
+        //   const el = document.createElement('div');
+        //   el.className = 'marker';
+        //   // make a marker for each feature and add to the map
+        //   new mapboxgl.Marker(el).setLngLat(marker.geometry.coordinates).addTo(map);
+        // });
+
+        map.addLayer(
+          {
+            id: 'spot-heat',
+            type: 'circle',
+            source: 'myData',
+            minzoom: 11,
+            paint: {
+              // increase the radius of the circle as the zoom level and dbh value increases
+              'circle-radius': {
+                property: 'heat',
+                type: 'exponential',
+                stops: [
+                  [{ zoom: 11, value: 1 }, 10],
+                  [{ zoom: 11, value: 62 }, 20],
+                  [{ zoom: 22, value: 1 }, 40],
+                  [{ zoom: 22, value: 62 }, 100]
+                ]
+              },
+              // 'circle-radius': {
+              //   'base':100,
+              //   'stops': [
+              //   [12, 100],
+              //   [22, 500]
+              //   ]
+              //   },
+              'circle-color': {
+                property: 'heat',
+                type: 'exponential',
+                stops: [
+                  [0, 'rgba(236,222,239,0)'],
+                  [10, 'rgb(236,222,239)'],
+                  [20, 'rgb(208,209,230)'],
+                  [30, 'rgb(166,189,219)'],
+                  [40, 'rgb(103,169,207)'],
+                  [50, 'rgb(28,144,153)'],
+                  [60, 'rgb(1,108,89)'],
+                  [70, 'red']
+                ]
+              },
+              'circle-stroke-color': 'white',
+              'circle-stroke-width': 1,
+              'circle-opacity': {
+                stops: [
+                  [11, 0],
+                  [13, 1]
+                ]
+              }
+            }
+          },
+          'waterway-label'
+        );
+      
+
+
+
+
   const firstLabelLayerId = map.getStyle().layers.find(layer => layer.type === 'symbol').id;
       map.addLayer({
         'id': '3d-buildings',
@@ -116,3 +435,32 @@
       firstLabelLayerId
       );
     });
+
+
+    map.on('click', 'spot-heat', (event) => {
+      new mapboxgl.Popup()
+        .setLngLat(event.features[0].geometry.coordinates)
+        .setHTML(`<strong>Place:</strong> ${event.features[0].properties.description}`)
+        // .setHTML(`<strong>DBH:</strong> ${event.features[0].properties.dbh}`)
+        .addTo(map);
+    });
+
+
+
+    function hideTooltip() {
+      d3.select("#tooltip").style("visibility", "hidden");
+    }
+    
+    function showTooltip(info, object) {
+      d3
+        .select("#tooltip")
+        .style("top", info.center.y + 3)
+        .style("left", info.center.x)
+        .style("visibility", "visible")
+        .style("pointer-events", "none")
+        .html(`<img src="https://upload.wikimedia.org/wikipedia/commons/d/d4/Cyclist_Icon_Germany_A1.svg" class='icon'/>
+                 <p class='title'> ${object.commonName}</p>
+                 <p class='item-a'> Free Bikes: ${object.additionalProperties[6].value}</p>
+                 <p class='item-b'> Empty Docks: ${object.additionalProperties[7].value}</p>`);
+    }
+    
