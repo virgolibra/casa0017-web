@@ -8,7 +8,7 @@
             "properties": {
                 "title": "Mapbox",
                 "description": "Bigben",
-                "heat":10
+                "heat":1.775
             }
         },
 
@@ -20,7 +20,7 @@
             "properties": {
                 "title": "Mapbox",
                 "description": "Tate Morden",
-                "heat":40
+                "heat":0.894
             }
         },
 
@@ -32,7 +32,7 @@
             "properties": {
                 "title": "Mapbox",
                 "description": "London Eye",
-                "heat":18
+                "heat":7.708
             }
         },
 
@@ -44,7 +44,7 @@
             "properties": {
                 "title": "Mapbox",
                 "description": "National Gallery",
-                "heat":47
+                "heat":8.479
             }
         },
 
@@ -56,7 +56,7 @@
             "properties": {
                 "title": "Mapbox",
                 "description": "British museum",
-                "heat":40
+                "heat":8.613
             }
         },
 
@@ -68,7 +68,7 @@
             "properties": {
                 "title": "Mapbox",
                 "description": "Tower of London",
-                "heat":30
+                "heat":1.314
             }
         },
 
@@ -80,7 +80,7 @@
             "properties": {
                 "title": "Mapbox",
                 "description": "Victoria and Albert Museum",
-                "heat":20
+                "heat":7.717
             }
         },
 
@@ -92,7 +92,7 @@
             "properties": {
                 "title": "Mapbox",
                 "description": "London Tower Bridge",
-                "heat":40
+                "heat":9.453
             }
         },
 
@@ -105,7 +105,7 @@
             "properties": {
                 "title": "Mapbox",
                 "description": "Westminster Abbey",
-                "heat":29
+                "heat":7.444
             }
         },
             
@@ -117,7 +117,7 @@
             "properties": {
                 "title": "Mapbox",
                 "description": "Hyde Park",
-                "heat":45
+                "heat":8.997
             }
         },
 
@@ -129,7 +129,7 @@
             "properties": {
                 "title": "Mapbox",
                 "description": "The Shard",
-                "heat":30
+                "heat":10.594
             }
         },
 
@@ -141,7 +141,7 @@
             "properties": {
                 "title": "Mapbox",
                 "description": "Trafalgar Square",
-                "heat":40
+                "heat":6.081
             }
         }
 

@@ -170,7 +170,7 @@
                 "properties": {
                     "title": "Mapbox",
                     "description": "Bigben",
-                    "heat":10
+                    "heat":1.775
                 }
             },
     
@@ -182,7 +182,7 @@
                 "properties": {
                     "title": "Mapbox",
                     "description": "Tate Morden",
-                    "heat":40
+                    "heat":0.894
                 }
             },
     
@@ -194,7 +194,7 @@
                 "properties": {
                     "title": "Mapbox",
                     "description": "London Eye",
-                    "heat":18
+                    "heat":7.708
                 }
             },
     
@@ -206,7 +206,7 @@
                 "properties": {
                     "title": "Mapbox",
                     "description": "National Gallery",
-                    "heat":47
+                    "heat":8.479
                 }
             },
     
@@ -218,7 +218,7 @@
                 "properties": {
                     "title": "Mapbox",
                     "description": "British museum",
-                    "heat":40
+                    "heat":8.613
                 }
             },
     
@@ -230,7 +230,7 @@
                 "properties": {
                     "title": "Mapbox",
                     "description": "Tower of London",
-                    "heat":30
+                    "heat":1.314
                 }
             },
     
@@ -242,7 +242,7 @@
                 "properties": {
                     "title": "Mapbox",
                     "description": "Victoria and Albert Museum",
-                    "heat":20
+                    "heat":7.717
                 }
             },
     
@@ -254,7 +254,7 @@
                 "properties": {
                     "title": "Mapbox",
                     "description": "London Tower Bridge",
-                    "heat":40
+                    "heat":9.453
                 }
             },
     
@@ -267,7 +267,7 @@
                 "properties": {
                     "title": "Mapbox",
                     "description": "Westminster Abbey",
-                    "heat":29
+                    "heat":7.444
                 }
             },
                 
@@ -279,7 +279,7 @@
                 "properties": {
                     "title": "Mapbox",
                     "description": "Hyde Park",
-                    "heat":45
+                    "heat":8.997
                 }
             },
     
@@ -291,7 +291,7 @@
                 "properties": {
                     "title": "Mapbox",
                     "description": "The Shard",
-                    "heat":30
+                    "heat":10.594
                 }
             },
     
@@ -303,7 +303,7 @@
                 "properties": {
                     "title": "Mapbox",
                     "description": "Trafalgar Square",
-                    "heat":40
+                    "heat":6.081
                 }
             }
     
@@ -319,7 +319,7 @@ for (const feature of geojson.features) {
   el.className = 'marker';
 
   // make a marker for each feature and add to the map
-  // new mapboxgl.Marker(el).setLngLat(feature.geometry.coordinates).addTo(map);
+//   new mapboxgl.Marker(el).setLngLat(feature.geometry.coordinates).addTo(map);
   new mapboxgl.Marker().setLngLat(feature.geometry.coordinates).addTo(map);
   
 }
@@ -342,6 +342,29 @@ for (const feature of geojson.features) {
         //   // make a marker for each feature and add to the map
         //   new mapboxgl.Marker(el).setLngLat(marker.geometry.coordinates).addTo(map);
         // });
+        // Add a symbol layer
+map.addLayer({
+    'id': 'points',
+    'type': 'symbol',
+    'source': 'myData',
+    'layout': {
+    
+    // get the title name from the source's "title" property
+    'text-field': ['get', 'description'],
+    'text-font': [
+    'Open Sans Semibold',
+    'Arial Unicode MS Bold'
+    ],
+    
+    'text-offset': [0, 1.25],
+    'text-anchor': 'top'
+    },
+
+    paint: {
+        "text-color": "#ffffff"
+      }
+    });
+
 
         map.addLayer(
           {
@@ -356,9 +379,9 @@ for (const feature of geojson.features) {
                 type: 'exponential',
                 stops: [
                   [{ zoom: 11, value: 1 }, 10],
-                  [{ zoom: 11, value: 62 }, 20],
+                  [{ zoom: 11, value: 12 }, 40],
                   [{ zoom: 22, value: 1 }, 40],
-                  [{ zoom: 22, value: 62 }, 100]
+                  [{ zoom: 22, value: 12 }, 200]
                 ]
               },
               // 'circle-radius': {
@@ -372,24 +395,39 @@ for (const feature of geojson.features) {
                 property: 'heat',
                 type: 'exponential',
                 stops: [
-                  [0, 'rgba(236,222,239,0)'],
-                  [10, 'rgb(236,222,239)'],
-                  [20, 'rgb(208,209,230)'],
-                  [30, 'rgb(166,189,219)'],
-                  [40, 'rgb(103,169,207)'],
-                  [50, 'rgb(28,144,153)'],
-                  [60, 'rgb(1,108,89)'],
+                  [0, 'rgba(255,191,0,10)'],
+                //   [2, 'rgba(255,191,0,10)'],
+                //   [4, 'rgba(255,191,0,20)'],
+                //   [6, 'rgba(255,191,0,30)'],
+                //   [7, 'rgba(255,191,0,40)'],
+                  [8, 'rgba(255,191,0,50)'],
+                //   [9, 'rgba(255,191,0,10)'],
+                //   [10,'rgba(255,191,0,10)'],
+                //   [11,'rgba(255,191,0,10)'],
+                  [12,'rgba(255,191,0,100)'],
                   [70, 'red']
                 ]
+
+                // stops: [
+                //     [0, 'rgba(236,222,239,0)'],
+                //     [2, 'rgb(236,222,239)'],
+                //     [4, 'rgb(208,209,230)'],
+                //     [6, 'rgb(166,189,219)'],
+                //     [8, 'rgb(103,169,207)'],
+                //     [10, 'rgb(28,144,153)'],
+                //     [12, 'rgb(1,108,89)'],
+                //     [70, 'red']
+                //   ]
               },
               'circle-stroke-color': 'white',
               'circle-stroke-width': 1,
               'circle-opacity': {
                 stops: [
                   [11, 0],
-                  [13, 1]
+                  [12, 1]
                 ]
               }
+              
             }
           },
           'waterway-label'
